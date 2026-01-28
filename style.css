@@ -146,10 +146,11 @@
 
   .section-title {
     display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 15px;
     color: var(--dark-blue);
-    margin-bottom: 3rem;
   }
 
   .section-title img {
