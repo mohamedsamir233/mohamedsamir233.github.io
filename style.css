@@ -1,0 +1,554 @@
+  :root {
+    --dark-blue: #001f54;
+    --main-blue: #034078;
+    --light-blue: #00a6fb;
+    --white: #ffffff;
+    --gray: #f8fafc;
+  }
+
+  body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    /* تأكد أنها 0 */
+    padding: 0;
+    /* غيرها من 40px إلى 0 */
+    color: #212529;
+  }
+
+  /* Hero Section Styling */
+  .hero {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    flex: 1;
+    background-color: var(--dark-blue);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-right {
+    flex: 1.5;
+    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Profile Card */
+  .profile-card {
+    background-color: var(--light-blue);
+    width: 300px;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 20px 20px 0px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    right: -50px;
+    z-index: 2;
+  }
+
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid var(--white);
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
+  .profile-card h2 {
+    color: var(--white);
+    margin: 10px 0;
+    letter-spacing: 1px;
+  }
+
+  .profile-card p {
+    color: var(--white);
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+
+  .social-icons {
+    margin-top: 20px;
+  }
+
+  .social-icons a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+  .btn-contact {
+    background-color: var(--dark-blue);
+    color: white;
+    padding: 14px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+    transition: 0.3s;
+  }
+
+  .btn-contact:hover {
+    background-color: var(--main-blue);
+  }
+
+  /* Typography & Buttons */
+  h1 {
+    font-size: 4rem;
+    margin: 0;
+    color: var(--dark-blue);
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    color: #555;
+    margin: 1rem 0;
+  }
+
+  .btn-group {
+    margin-top: 2rem;
+  }
+
+  .btn {
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 15px;
+    transition: 0.3s;
+  }
+
+  .btn-primary {
+    background: var(--dark-blue);
+    color: white;
+  }
+
+  .btn-secondary {
+    border: 2px solid var(--dark-blue);
+    color: var(--dark-blue);
+  }
+
+  /* Sections Styling */
+  .section {
+    padding: 5rem 10%;
+    background: var(--gray);
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: var(--dark-blue);
+    margin-bottom: 3rem;
+  }
+
+  .section-title img {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Grid for Certs & Projects */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .cert-card,
+  .project-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+  }
+
+  .cert-card:hover,
+  .project-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .company-logo {
+    width: 60px;
+    margin-bottom: 1rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .hero-left {
+      flex: none;
+      height: 50vh;
+    }
+
+    .hero-right {
+      flex: none;
+      padding: 2rem 5%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .profile-card {
+      width: 250px;
+      right: 0;
+    }
+  }
+
+
+  .gallery-container {
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  h1 {
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin-block: 0;
+  }
+
+  .gallery-container p {
+    color: #6c757d;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    margin-top: 15px;
+  }
+
+  .filter-buttons {
+    margin-bottom: 50px;
+  }
+
+  .filter-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    color: #6c757d;
+    padding: 12px 24px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    background-color: #e9ecef;
+    color: #212529;
+  }
+
+  .filter-btn.active {
+    background-color: #212529;
+    color: #fff;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+  }
+
+  .gallery-item {
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+
+  /* Footer Styling */
+  /* Navbar Styling */
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  /* Navbar Styling */
+  /* تصميم الـ Navbar العائم */
+  .navbar {
+    position: fixed;
+    top: 25px;
+    /* بيبعد عن السقف عشان يبان إنه طاير */
+    left: 50%;
+    transform: translateX(-50%);
+    /* توسيط في نص الشاشة بالظبط */
+    width: 90%;
+    max-width: 1100px;
+    /* عشان ميبقاش عريض بزيادة في الشاشات الكبيرة */
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.5);
+    /* خلفية بيضاء شفافة */
+    backdrop-filter: blur(12px);
+    /* تأثير زجاجي (Glassmorphism) */
+    border-radius: 100px;
+    /* حواف دائرية بالكامل */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    /* ظل خفيف جداً */
+    padding: 10px 30px;
+  }
+
+  /* توزيع العناصر جوه الـ Navbar */
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* تنسيق اللوجو */
+  .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dark-blue);
+  }
+
+  .logo span {
+    color: var(--light-blue);
+  }
+
+  /* تنسيق اللينكات */
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--light-blue);
+  }
+
+  /* زرار الـ Dark Mode */
+  .theme-btn {
+    background: #f0f0f0;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+  }
+
+  .theme-btn:hover {
+    background: #e0e0e0;
+  }
+
+  body.dark-theme .navbar {
+    background: rgba(15, 23, 42, 0.8);
+    /* لون كحلي غامق شفاف */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  body.dark-theme .nav-links a,
+  body.dark-theme .logo {
+    color: #fff;
+  }
+
+  /* Dark Mode Variables */
+  body.dark-theme {
+    background-color: #0b0e14;
+    color: #e0e0e0;
+  }
+
+  body.dark-theme .nav-links a,
+  body.dark-theme .logo,
+  body.dark-theme h1 {
+    color: #ffffff;
+  }
+
+  body.dark-theme .hero-right {
+    background-color: #0b0e14;
+  }
+
+
+  /* تحويل خلفية كروت الشهادات */
+  body.dark-theme .cert-card,
+  body.dark-theme .gallery-item {
+    background-color: #1a1f26;
+    /* لون رمادي غامق رايق */
+    border: 1px solid #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* تحويل نصوص الشهادات للون الأبيض */
+  body.dark-theme .cert-card h3,
+  body.dark-theme .cert-card p,
+  body.dark-theme .section-title h2,
+  body.dark-theme .gallery-container h1,
+  body.dark-theme .gallery-container p,
+  body.dark-theme .subtitle {
+    color: #ffffff;
+  }
+
+  /* تعديل قسم الـ Gallery والـ Section */
+  body.dark-theme .section,
+  body.dark-theme .gallery-container {
+    background-color: #0b0e14;
+    /* نفس خلفية الـ body */
+  }
+
+  /* تحويل أزرار الفلتر */
+  body.dark-theme .filter-btn {
+    color: #ccc;
+  }
+
+  body.dark-theme .filter-btn.active {
+    background-color: var(--light-blue);
+    color: white;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  section,
+  .gallery-container {
+    scroll-margin-top: 120px;
+    /* نفس ارتفاع الـ Navbar بتاعك تقريباً */
+  }
+
+  /* -------------- */
+  /* تنسيق الحاوية الأساسية للكروت */
+  .info-cards-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+  }
+
+  .info-card {
+    flex: 1;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* حدود خفيفة */
+    border-radius: 12px;
+    padding: 20px;
+    transition: 0.3s;
+  }
+
+  .info-card img {
+    width: 25px;
+    margin-bottom: 10px;
+  }
+
+  .info-card h4 {
+    margin: 5px 0;
+    font-size: 1rem;
+  }
+
+  .info-card p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  /* تنسيق قسم الأدوات */
+  .tools-section {
+    margin-top: 40px;
+  }
+
+  .tools-section p {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+
+  .tools-icons {
+    display: flex;
+    gap: 15px;
+  }
+
+  .tools-icons img {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  /* تعديل الـ Dark Mode لهذه العناصر */
+  body.dark-theme .info-card,
+  body.dark-theme .tools-icons img {
+    border-color: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  body.dark-theme .info-card p {
+    color: rgba(236, 240, 241, 1.0);
+  }
+
+  .tech-stack {
+    margin-top: 0px;
+    /* قللنا المسافة هنا */
+    display: flex;
+    gap: 12px;
+    /* المسافة بين الأيقونات وبعضها */
+  }
+
+  .tech-stack img {
+    width: 45px;
+    /* حجم أنسب للأيقونات */
+    height: 45px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* برواز خفيف */
+    border-radius: 8px;
+    transition: 0.3s;
+  }
+
+  /* في حالة الـ Dark Mode عشان البرواز يبان */
+  body.dark-theme .tech-stack img {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+  }
