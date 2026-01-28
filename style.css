@@ -185,31 +185,6 @@
   }
 
   /* Responsive Design */
-  @media (max-width: 768px) {
-    .hero {
-      flex-direction: column;
-      height: auto;
-    }
-
-    .hero-left {
-      flex: none;
-      height: 50vh;
-    }
-
-    .hero-right {
-      flex: none;
-      padding: 2rem 5%;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-    }
-
-    .profile-card {
-      width: 250px;
-      right: 0;
-    }
-  }
 
 
   .gallery-container {
@@ -553,76 +528,79 @@
     background: rgba(255, 255, 255, 0.05);
   }
 
-@media (max-width: 768px) {
-  /* 1. Navbar */
-  .navbar {
-    width: 95%;
-    padding: 10px 15px;
-    top: 10px;
-  }
+  /* -------------------------- */
+  @media (max-width: 768px) {
 
-  .nav-links {
-    gap: 15px;
-  }
+    /* 1. Navbar */
+    .navbar {
+      width: 80%;
+      padding: 10px 15px;
+      top: 10px;
+    }
 
-  .nav-links a {
-    font-size: 0.8rem;
-  }
+    .nav-links {
+      gap: 15px;
+    }
 
-  .logo {
-    font-size: 1.1rem;
-  }
+    .nav-links a {
+      font-size: 0.8rem;
+    }
 
-  /* 2. Hero Section */
-  .hero {
-    flex-direction: column;
-    height: auto;
-    padding-top: 100px;
-  }
+    .logo {
+      font-size: 1.1rem;
+    }
 
-  .hero-left {
-    width: 100%;
-    height: 350px;
-  }
+    /* 2. Hero Section */
+    .hero {
+      flex-direction: column;
+      height: auto;
+      padding-top: 100px;
+    }
 
-  .profile-card {
-    position: relative;
-    right: 0;
-    margin: 0 auto;
-    width: 280px;
-    bottom: -30px;
-  }
+    .hero-left {
+      width: 100%;
+      height: 350px;
+      padding-bottom: 100px;
+    }
 
-  .hero-right {
-    width: 100%;
-    /* زودنا الـ 60 خليناها 110 عشان نزود المسافة فوق I'm a Data Analyst */
-    padding: 110px 5% 30px 5%; 
-    text-align: center;
-  }
+    .profile-card {
+      position: relative;
+      right: 0;
+      margin: 0 auto;
+      width: 280px;
+      bottom: -30px;
+    }
 
-  h1 {
-    font-size: 2.2rem;
-  }
+    .hero-right {
+      width: 100%;
+      /* زودنا الـ 60 خليناها 110 عشان نزود المسافة فوق I'm a Data Analyst */
+      padding: 50px 5% 30px 5%;
+      text-align: center;
+    }
 
-  /* 3. Info Cards & Portfolio Header */
-  .info-cards-container {
-    flex-direction: column;
-    gap: 20px;
-  }
+    h1 {
+      font-size: 2.2rem;
+    }
 
-  .tech-stack {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+    /* 3. Info Cards & Portfolio Header */
+    .info-cards-container {
+      flex-direction: column;
+      gap: 20px;
+    }
 
-  .portfolio-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
+    .tech-stack {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-  /* تظبيط مكان لينكات LinkedIn و GitHub في الموبايل */
-  .links-side {
-    justify-content: center;
+    .portfolio-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+    }
+
+    /* تظبيط مكان لينكات LinkedIn و GitHub في الموبايل */
+    .links-side {
+      justify-content: center;
+    }
   }
-}
