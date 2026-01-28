@@ -151,7 +151,14 @@
     justify-content: center;
     gap: 15px;
     color: var(--dark-blue);
+    padding-bottom: 25px;
   }
+
+  .section-title#work {
+    padding-bottom: 0px;
+  }
+
+
 
   .section-title img {
     width: 40px;
