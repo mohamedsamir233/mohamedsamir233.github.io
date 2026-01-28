@@ -553,86 +553,76 @@
     background: rgba(255, 255, 255, 0.05);
   }
 
-  /* -------------------------- */
-
-  @media (max-width: 768px) {
-
-    /* تظبيط الهيرو سيكشن */
-    .hero {
-      flex-direction: column;
-      /* العناصر تحت بعض */
-      height: auto;
-      padding-top: 100px;
-      /* مسافة عشان الناف بار العائم */
-    }
-
-    .hero-left {
-      width: 100%;
-      height: 350px;
-      /* تحديد طول مناسب لجزء الصورة */
-    }
-
-    .profile-card {
-      position: relative;
-      /* عشان تنزل في مكانها الطبيعي تحت بعض */
-      right: 0;
-      margin: 0 auto;
-      width: 280px;
-      bottom: -30px;
-      /* حركة شياكة تخلي الكارت يلمس الجزء الأبيض */
-    }
-
-    .hero-right {
-      width: 100%;
-      padding: 60px 5% 30px 5%;
-      text-align: center;
-      /* التوسيط على الموبايل دايماً أشيك */
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      /* تصغير الخط عشان مياخدش كذا سطر */
-    }
+@media (max-width: 768px) {
+  /* 1. Navbar */
+  .navbar {
+    width: 95%;
+    padding: 10px 15px;
+    top: 10px;
   }
 
-  @media (max-width: 768px) {
-    .navbar {
-      width: 95%;
-      padding: 10px 15px;
-      top: 10px;
-    }
-
-    .nav-links {
-      gap: 15px;
-      /* تقليل المسافة بين اللينكات */
-    }
-
-    .nav-links a {
-      font-size: 0.8rem;
-      /* تصغير الخط */
-    }
-
-    .logo {
-      font-size: 1.1rem;
-    }
+  .nav-links {
+    gap: 15px;
   }
 
-  @media (max-width: 768px) {
-    .info-cards-container {
-      flex-direction: column;
-      /* الكروت تحت بعض */
-      gap: 20px;
-    }
-
-    .tech-stack {
-      justify-content: center;
-      /* توسيط أيقونات البرامج */
-      flex-wrap: wrap;
-    }
-
-    .portfolio-header {
-      flex-direction: column;
-      text-align: center;
-      gap: 15px;
-    }
+  .nav-links a {
+    font-size: 0.8rem;
   }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  /* 2. Hero Section */
+  .hero {
+    flex-direction: column;
+    height: auto;
+    padding-top: 100px;
+  }
+
+  .hero-left {
+    width: 100%;
+    height: 350px;
+  }
+
+  .profile-card {
+    position: relative;
+    right: 0;
+    margin: 0 auto;
+    width: 280px;
+    bottom: -30px;
+  }
+
+  .hero-right {
+    width: 100%;
+    /* زودنا الـ 60 خليناها 110 عشان نزود المسافة فوق I'm a Data Analyst */
+    padding: 110px 5% 30px 5%; 
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  /* 3. Info Cards & Portfolio Header */
+  .info-cards-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .tech-stack {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .portfolio-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  /* تظبيط مكان لينكات LinkedIn و GitHub في الموبايل */
+  .links-side {
+    justify-content: center;
+  }
+}
