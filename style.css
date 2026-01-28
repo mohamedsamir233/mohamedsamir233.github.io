@@ -552,3 +552,87 @@
     border-color: rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.05);
   }
+
+  /* -------------------------- */
+
+  @media (max-width: 768px) {
+
+    /* تظبيط الهيرو سيكشن */
+    .hero {
+      flex-direction: column;
+      /* العناصر تحت بعض */
+      height: auto;
+      padding-top: 100px;
+      /* مسافة عشان الناف بار العائم */
+    }
+
+    .hero-left {
+      width: 100%;
+      height: 350px;
+      /* تحديد طول مناسب لجزء الصورة */
+    }
+
+    .profile-card {
+      position: relative;
+      /* عشان تنزل في مكانها الطبيعي تحت بعض */
+      right: 0;
+      margin: 0 auto;
+      width: 280px;
+      bottom: -30px;
+      /* حركة شياكة تخلي الكارت يلمس الجزء الأبيض */
+    }
+
+    .hero-right {
+      width: 100%;
+      padding: 60px 5% 30px 5%;
+      text-align: center;
+      /* التوسيط على الموبايل دايماً أشيك */
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      /* تصغير الخط عشان مياخدش كذا سطر */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar {
+      width: 95%;
+      padding: 10px 15px;
+      top: 10px;
+    }
+
+    .nav-links {
+      gap: 15px;
+      /* تقليل المسافة بين اللينكات */
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      /* تصغير الخط */
+    }
+
+    .logo {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .info-cards-container {
+      flex-direction: column;
+      /* الكروت تحت بعض */
+      gap: 20px;
+    }
+
+    .tech-stack {
+      justify-content: center;
+      /* توسيط أيقونات البرامج */
+      flex-wrap: wrap;
+    }
+
+    .portfolio-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+    }
+  }
