@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Samir — Portfolio</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0d12'/><text x='50' y='68' font-family='monospace' font-size='48' font-weight='700' fill='%23f2a93b' text-anchor='middle'>MS</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0d12;
+    --ink-2:#10141b;
+    --surface:#141920;
+    --surface-2:#1a2029;
+    --text:#e9ebee;
+    --muted:#8c95a3;
+    --muted-2:#5f6773;
+    --amber:#f2a93b;
+    --amber-dim:#8a6423;
+    --cyan:#49c6b5;
+    --line:rgba(255,255,255,0.08);
+    --line-strong:rgba(255,255,255,0.14);
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1100px 600px at 85% -10%, rgba(242,169,59,0.08), transparent 60%),
+      radial-gradient(900px 500px at 10% 10%, rgba(73,198,181,0.06), transparent 55%),
+      var(--ink);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--amber);color:#111;}
+  a{color:inherit;text-decoration:none;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,13,18,0.75);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;letter-spacing:0.2px;}
+  .brand .mark{
+    width:34px;height:34px;border-radius:9px;
+    background:linear-gradient(135deg,var(--amber),#c97f1e);
+    display:flex;align-items:center;justify-content:center;
+    color:#151515;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;
+  }
+  .navlinks{display:flex;gap:32px;font-size:14.5px;color:var(--muted);}
+  .navlinks a{transition:color .2s;}
+  .navlinks a:hover{color:var(--text);}
+  .nav-cta{
+    font-family:'JetBrains Mono',monospace;font-size:13px;
+    border:1px solid var(--line-strong);padding:9px 16px;border-radius:8px;
+    color:var(--text);transition:.2s;white-space:nowrap;
+  }
+  .nav-cta:hover{border-color:var(--amber);color:var(--amber);}
+  .navtoggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  header.hero{padding:96px 0 80px;position:relative;overflow:hidden;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr 0.85fr;gap:56px;align-items:center;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--cyan);
+    display:flex;align-items:center;gap:9px;margin-bottom:22px;letter-spacing:.5px;
+    opacity:0;animation:fadeUp .6s ease forwards;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 3px rgba(73,198,181,0.18);}
+  h1.name{
+    font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(38px,5.2vw,62px);
+    line-height:1.04;letter-spacing:-1px;margin-bottom:18px;
+    opacity:0;animation:fadeUp .6s ease .08s forwards;
+  }
+  .role-line{
+    font-family:'JetBrains Mono',monospace;font-size:clamp(16px,2vw,20px);color:var(--amber);
+    display:flex;align-items:center;gap:10px;margin-bottom:26px;min-height:28px;
+    opacity:0;animation:fadeUp .6s ease .16s forwards;
+  }
+  .role-line .prompt{color:var(--muted-2);}
+  .role-line .cursor{display:inline-block;width:9px;height:19px;background:var(--amber);animation:blink 1s step-start infinite;}
+  p.blurb{
+    max-width:520px;color:var(--muted);font-size:16px;margin-bottom:34px;
+    opacity:0;animation:fadeUp .6s ease .24s forwards;
+  }
+  .hero-cta{display:flex;gap:14px;margin-bottom:46px;flex-wrap:wrap;
+    opacity:0;animation:fadeUp .6s ease .32s forwards;
+  }
+  .btn{
+    padding:13px 24px;border-radius:9px;font-size:14.5px;font-weight:600;
+    display:inline-flex;align-items:center;gap:8px;transition:.2s;
+  }
+  .btn-primary{background:var(--amber);color:#151107;}
+  .btn-primary:hover{background:#ffb94f;transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--line-strong);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);}
+  .stat-row{
+    display:flex;gap:36px;flex-wrap:wrap;
+    opacity:0;animation:fadeUp .6s ease .4s forwards;
+  }
+  .stat b{font-family:'Sora',sans-serif;font-size:24px;display:block;color:var(--text);}
+  .stat span{font-size:12.5px;color:var(--muted-2);font-family:'JetBrains Mono',monospace;}
+
+  /* hero visual - abstract dashboard */
+  .hero-visual{
+    background:var(--surface);border:1px solid var(--line);border-radius:18px;
+    padding:22px;position:relative;
+    opacity:0;animation:fadeUp .7s ease .3s forwards;
+  }
+  .hero-visual .hv-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+  .hv-head span{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted-2);}
+  .hv-dots{display:flex;gap:6px;}
+  .hv-dots i{width:8px;height:8px;border-radius:50%;background:var(--line-strong);display:block;}
+  svg#chart{width:100%;height:auto;display:block;}
+  .bar{transform-origin:bottom;animation:grow 1s cubic-bezier(.2,.8,.2,1) forwards;}
+  .hv-foot{display:flex;justify-content:space-between;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-2);}
+  .hv-foot b{color:var(--cyan);}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes blink{50%{opacity:0;}}
+  @keyframes grow{from{transform:scaleY(0);}to{transform:scaleY(1);}}
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:78px 0;border-top:1px solid var(--line);}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:10px;}
+  .sec-head h2{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(24px,3vw,32px);display:flex;align-items:center;gap:12px;}
+  .sec-tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted-2);}
+  .sec-sub{color:var(--muted);font-size:15px;max-width:560px;margin-top:8px;}
+
+  /* ---------- CERTIFICATIONS ---------- */
+  .cert-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;
+  }
+  .cert-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;position:relative;overflow:hidden;transition:.25s;display:flex;flex-direction:column;
+    height:100%;
+  }
+  .cert-card:before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:var(--accent,var(--amber));
+  }
+  .cert-card:hover{transform:translateY(-4px);border-color:var(--line-strong);box-shadow:0 14px 30px -14px rgba(0,0,0,0.5);}
+  .badge{
+    width:200px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    font-family:'Sora',sans-serif;font-weight:800;font-size:15px;margin-bottom:16px;color:#0e1116;
+    background:var(--accent,var(--amber));
+  }
+  .cert-card h3{font-size:15.5px;font-weight:600;margin-bottom:8px;line-height:1.3;font-family:'Sora',sans-serif;}
+  .cert-card p{font-size:13.2px;color:var(--muted);margin-bottom:16px;flex-grow:1}
+  .verify{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted-2);display:inline-flex;align-items:center;gap:5px;letter-spacing:.3px;margin-top:auto}
+
+  /* ---------- PROJECTS ---------- */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+  .filter-btn{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:9px 16px;border-radius:20px;
+    border:1px solid var(--line-strong);color:var(--muted);transition:.2s;cursor:pointer;background:none;
+  }
+  .filter-btn:hover{color:var(--text);border-color:var(--text);}
+  .filter-btn.active{background:var(--amber);color:#151107;border-color:var(--amber);}
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;}
+  .proj-card{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;display:flex;flex-direction:column;transition:.3s;
+  }
+  .proj-card:hover{border-color:var(--line-strong);transform:translateY(-3px);}
+  .proj-card.hide{display:none;}
+  .proj-tag{
+    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);
+    border:1px solid rgba(73,198,181,0.3);background:rgba(73,198,181,0.07);
+    padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:16px;width:fit-content;
+  }
+  .proj-card h3{font-family:'Sora',sans-serif;font-size:18px;font-weight:700;margin-bottom:10px;}
+  .proj-card ul{list-style:none;margin-bottom:18px;flex-grow:1;}
+  .proj-card li{font-size:13.6px;color:var(--muted);margin-bottom:8px;padding-left:14px;position:relative;}
+  .proj-card li:before{content:"—";position:absolute;left:0;color:var(--amber-dim);}
+  .stack{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px;}
+  .chip{font-family:'JetBrains Mono',monospace;font-size:10.8px;color:var(--muted);border:1px solid var(--line);padding:4px 9px;border-radius:6px;}
+  .proj-link{font-size:13px;font-weight:600;color:var(--amber);display:inline-flex;align-items:center;gap:6px;}
+  .proj-link:hover{color:#ffb94f;}
+
+  /* ---------- SKILLS ---------- */
+  .skill-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;}
+  .skill-col h4{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted-2);margin-bottom:16px;letter-spacing:.5px;}
+  .tagcloud{display:flex;flex-wrap:wrap;gap:9px;}
+  .tagcloud span{
+    font-size:13px;padding:7px 13px;border-radius:8px;border:1px solid var(--line);color:var(--text);
+    background:var(--surface);
+  }
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer{padding:70px 0 40px;}
+  .contact-box{
+    background:var(--surface);border:1px solid var(--line);border-radius:20px;
+    padding:48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;
+  }
+  .contact-box h2{font-family:'Sora',sans-serif;font-size:clamp(24px,3vw,32px);font-weight:700;max-width:420px;}
+  .contact-links{display:flex;flex-direction:column;gap:12px;}
+  .contact-links a{font-family:'JetBrains Mono',monospace;font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:10px;transition:.2s;}
+  .contact-links a:hover{color:var(--amber);}
+  .foot-bottom{text-align:center;margin-top:36px;font-size:12.5px;color:var(--muted-2);font-family:'JetBrains Mono',monospace;}
+
+  @media (max-width:820px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{order:-1;}
+    .navlinks{display:none;}
+    .contact-box{flex-direction:column;align-items:flex-start;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="mark">MS</span> Mohamed Samir</div>
+    <div class="navlinks">
+      <a href="#certs">Certifications</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="#contact">Get in touch</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> CAIRO, EGYPT · OPEN TO OPPORTUNITIES</div>
+      <h1 class="name">Mohamed Samir</h1>
+      <div class="role-line"><span class="prompt">&gt;_</span> <span id="typewriter"></span><span class="cursor"></span></div>
+      <p class="blurb">Computer Science graduate with hands-on experience in data analysis, reporting, and technical operations. Skilled in Excel, Power BI, SQL, and Python, with a foundation in data modeling and process improvement — using data and technology to support better decisions and deliver measurable results.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#projects">View Projects</a>
+        <a class="btn btn-ghost" href="res/Mohamed_samir.pdf" target="_blank">Download Resume</a>
+        <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b>7+</b><span>CERTIFICATIONS</span></div>
+        <div class="stat"><b>15+</b><span>PROJECTS ACHIEVED</span></div>
+        <div class="stat"><b>4</b><span>ROLES · ML / BI / TEACHING / Operations</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hv-head">
+        <span>metrics.overview</span>
+        <div class="hv-dots"><i></i><i></i><i></i></div>
+      </div>
+      <svg id="chart" viewBox="0 0 320 160">
+        <polyline points="10,130 60,90 110,105 160,60 210,75 260,30 310,45" fill="none" stroke="#49c6b5" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="#f2a93b" opacity="0.85">
+          <rect class="bar" x="6" y="110" width="14" height="40" rx="2" style="animation-delay:.1s"/>
+          <rect class="bar" x="56" y="70" width="14" height="80" rx="2" style="animation-delay:.2s"/>
+          <rect class="bar" x="106" y="85" width="14" height="65" rx="2" style="animation-delay:.3s"/>
+          <rect class="bar" x="156" y="40" width="14" height="110" rx="2" style="animation-delay:.4s"/>
+          <rect class="bar" x="206" y="55" width="14" height="95" rx="2" style="animation-delay:.5s"/>
+          <rect class="bar" x="256" y="10" width="14" height="140" rx="2" style="animation-delay:.6s"/>
+          <rect class="bar" x="300" y="25" width="14" height="125" rx="2" style="animation-delay:.7s"/>
+        </g>
+      </svg>
+      <div class="hv-foot"><span>QUERY: SELECT * FROM impact</span><b>+30% efficiency</b></div>
+    </div>
+  </div>
+</header>
+
+<section id="certs">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>🏅 Certifications</h2>
+      <span class="sec-tag">07 · VERIFIED CREDENTIALS</span>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card" style="--accent:#4285F4;">
+        <div class="badge">Google | Coursera</div>
+        <h3>Google Data Analytics Professional Certificate</h3>
+        <p>Data cleaning, analysis and visualization using Excel, SQL, R and Python to support data-driven decisions.</p>
+        <a href="https://www.coursera.org/account/accomplishments/specialization/LBAXDLHLN3AT" target="_blank" rel="noopener noreferrer"><span class="verify">↗ VERIFY CREDENTIAL</span></a>
+      </div>
+      <div class="cert-card" style="--accent:#6b5ce6;">
+        <div class="badge">IBM | Coursera</div>
+        <h3>IBM Data Analysis with Python</h3>
+        <p>Analyzing and visualizing data using Python libraries such as Pandas, NumPy and Matplotlib.</p>
+        <a href="https://coursera.org/verify/7CK7WWYR3MCX" target="_blank" rel="noopener noreferrer"><span class="verify">↗ VERIFY CREDENTIAL</span></a>
+      </div>
+
+        <div class="cert-card" style="--accent:#1BA0D7;">
+        <div class="badge">Cisco</div>
+        <h3>CCNA: Introduction to Networks</h3>
+        <p>Learned networking fundamentals: IP addressing, switching, routing, IPv4/IPv6, Packet Tracer.</p>
+        <a href="https://www.credly.com/badges/e5a8093b-676c-43a9-b0b4-385654132ac2"
+        target="_blank" rel="noopener noreferrer">
+            <span class="verify">↗ VERIFY CREDENTIAL</span>
+        </a>
+            </div>
+
+        <div class="cert-card" style="--accent:#0056D2;">
+        <div class="badge">UNDP | Coursera</div>
+        <h3>Data Analyst L1</h3>
+        <p>Completed data analytics training covering Excel, SQL, visualization, cleaning, business analytics.</p>
+        <a href="https://www.coursera.org/account/accomplishments/badge/timkMLLVS56ppDCy1Zuefg"
+           target="_blank" rel="noopener noreferrer">
+        <span class="verify">↗ VERIFY CREDENTIAL</span>
+        </a>
+        </div>
+      <div class="cert-card" style="--accent:#0096d6;">
+        <div class="badge">HP</div>
+        <h3>HP LIFE Strategic Planning</h3>
+        <p>Practical knowledge in business strategic planning, goal setting and market analysis.</p>
+        <a href="https://www.life-global.org/certificate/bd0fcee5-3da3-4d74-adb0-e794c7ede55f" target="_blank" rel="noopener noreferrer"><span class="verify">↗ VERIFY CREDENTIAL</span></a>
+      </div>
+      <div class="cert-card" style="--accent:#0096d6;">
+        <div class="badge">HP</div>
+        <h3>HP LIFE Agile Project Management</h3>
+        <p>Agile methodologies such as Scrum and Kanban for efficient project and team management.</p>
+        <a href="https://www.life-global.org/certificate/d13d25e7-2b5d-4709-9953-0404faef7395" target="_blank" rel="noopener noreferrer"><span class="verify">↗ VERIFY CREDENTIAL</span></a>
+      </div>
+      <div class="cert-card" style="--accent:#0096d6;">
+        <div class="badge">HP</div>
+        <h3>HP LIFE Data Science &amp; Analytics</h3>
+        <p>Fundamentals of data science and analytics, and how data drives business decisions.</p>
+        <a href="https://www.life-global.org/certificate/fcaad66e-ec99-483c-a223-0f2f707b1a57" target="_blank" rel="noopener noreferrer"><span class="verify">↗ VERIFY CREDENTIAL</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>💼 Project Gallery</h2>
+      <span class="sec-tag">FILTER BY TITLE</span>
+    </div>
+    <p class="sec-sub" style="margin-top:-24px;margin-bottom:32px;">Spanning business intelligence, machine learning and software development — click a title to filter.</p>
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="bi">Business Intelligence</button>
+      <button class="filter-btn" data-filter="ml">Machine Learning</button>
+      <button class="filter-btn" data-filter="dev">Software Development</button>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card" data-cat="bi">
+        <span class="proj-tag">Business Intelligence</span>
+        <h3>Supply Chain &amp; Sales Analysis</h3>
+        <ul>
+          <li>Identified a critical supply chain risk — 11% of revenue ($150K) concentrated in a single supplier.</li>
+          <li>Flagged supplier coverage of 2.65 vs. a 3.45 benchmark (-23%), signaling low diversification.</li>
+        </ul>
+        <div class="stack"><span class="chip">Excel</span><span class="chip">Power Query</span><span class="chip">Power BI</span><span class="chip">SQL</span></div>
+        <a class="proj-link" href="https://www.linkedin.com/posts/mohamedsamir233_report-activity-7471159112270147584-3Z3W" target="_blank" rel="noopener">View on LinkedIn ↗</a>
+      </div>
+
+      <div class="proj-card" data-cat="bi">
+        <span class="proj-tag">Business Intelligence</span>
+        <h3>Healthcare Analysis Project</h3>
+        <ul>
+          <li>Analyzed 55K patient records, uncovering billing patterns across $1.42B in charges over 5 years.</li>
+          <li>Surfaced key metrics: average patient age of 51 and average stay of 15 days.</li>
+        </ul>
+        <div class="stack"><span class="chip">Excel</span><span class="chip">Power Query</span><span class="chip">Power BI</span><span class="chip">Seaborn</span></div>
+        <a class="proj-link" href="https://www.linkedin.com/posts/mohamedsamir233_dataanalytics-healthcare-powerbi-activity-7301004142330699777-V9KR" target="_blank" rel="noopener">View on LinkedIn ↗</a></div>
+
+      <div class="proj-card" data-cat="bi">
+        <span class="proj-tag">Business Intelligence</span>
+        <h3>Coffee Beans Sales & Growth Analysis</h3>
+        <ul>
+          <li>Analyzed 701K coffee sales, identifying April 2023 as the peak growth month.</li>
+          <li>Ethiopian beans exceeded 2,000 units, with profit margins reaching 23.24%.</li>
+        </ul>
+        <div class="stack"><span class="chip">Excel</span><span class="chip">Power Query</span><span class="chip">Power BI</span><span class="chip">Seaborn</span></div>
+        <a class="proj-link" href="https://www.linkedin.com/posts/mohamedsamir233_dataanalytics-healthcare-powerbi-activity-7381017992937160704-8cWe" target="_blank" rel="noopener">View on LinkedIn ↗</a></div>
+
+
+      <div class="proj-card" data-cat="ml">
+        <span class="proj-tag">Machine Learning</span>
+        <h3>KMeans Clustering Web-App</h3>
+        <ul>
+          <li>Built an interactive app that performs customer segmentation in under 3 minutes.</li>
+          <li>Cut manual preprocessing time by 50% and improved clustering workflow efficiency by 30%.</li>
+        </ul>
+        <div class="stack"><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">Plotly</span><span class="chip">Scikit-Learn</span><span class="chip">Streamlit</span></div>
+        <a class="proj-link" href="https://github.com/mohamedsamir233/Clustering-App" target="_blank" rel="noopener">View on GitHub ↗</a></div>
+
+     <div class="proj-card" data-cat="ml">
+        <span class="proj-tag">Machine Learning</span>
+        <h3>Diabetes-Prediction</h3>
+        <ul>
+          <li>a Diabetes Prediction Model using Python and Scikit-learn, including data preprocessing, outlier handling, and EDA.</li>
+          <li>Built a Gaussian Naïve Bayes classifier that achieved 79% accuracy on the test dataset.</li>
+        </ul>
+        <div class="stack">
+            <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">Scikit-learn</span><span class="chip">Gaussian Naïve Bayes</span>
+        </div><a class="proj-link" href="https://github.com/mohamedsamir233/Diabetes-Prediction" target="_blank" rel="noopener">View on GitHub ↗</a></div>
+
+        <div class="proj-card" data-cat="ml">
+            <span class="proj-tag">Machine Learning</span>
+            <h3>AC Search Trends Forecasting</h3>
+            <ul>
+            <li>Analyzed 5 years of weekly AC search trends to identify recurring seasonal demand.</li>
+            <li>Predicted search demand for the next 24 months using Prophet with yearly seasonality.</li>
+            </ul>
+            <div class="stack">
+                <span class="chip">Python</span>
+                <span class="chip">Pandas</span>
+                <span class="chip">Prophet</span>
+                <span class="chip">Matplotlib</span>
+            </div>
+            <a class="proj-link" href="https://github.com/mohamedsamir233/AC_Search_5Y" target="_blank" rel="noopener">
+                View on GitHub ↗
+            </a>
+        </div>
+
+      <div class="proj-card" data-cat="dev">
+        <span class="proj-tag">Software Development</span>
+        <h3>Rocket-Downloader</h3>
+        <ul>
+          <li>Multithreaded desktop download manager built with PyQt5 for a responsive, non-blocking UI.</li>
+          <li>Open-source on GitHub — 23 stars and 9 forks from the community.</li>
+        </ul>
+        <div class="stack"><span class="chip">Python</span><span class="chip">PyQt5</span><span class="chip">Multithreading</span></div>
+        <a class="proj-link" href="https://github.com/mohamedsamir233/Rocket-Downloader" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+      <div class="proj-card" data-cat="dev">
+      <span class="proj-tag">AI Desktop Application</span>
+        <h3>Easy Learning</h3>
+        <ul>
+        <li>Desktop application that leverages AI to translate spoken content in videos into multiple languages.</li>
+        <li>Designed with PyQt5 and integrates speech processing and AI-based translation. Currently under development.</li>
+        </ul>
+        <div class="stack">
+        <span class="chip">Python</span><span class="chip">PyQt5</span><span class="chip">AI</span><span class="chip">Speech Recognition</span>
+        </div>
+        <a class="proj-link" href="https://github.com/mohamedsamir233/Easy-learning" target="_blank" rel="noopener">View on GitHub ↗</a>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>🛠 Skills</h2>
+      <span class="sec-tag">TOOLS &amp; STACK</span>
+    </div>
+    <div class="skill-cols">
+      <div class="skill-col">
+        <h4>ANALYTICS &amp; BI</h4>
+        <div class="tagcloud">
+          <span>Excel (Power Query, Pivot Tables)</span><span>Power BI (DAX)</span><span>SQL (CTEs, Window Functions)</span><span>Tableau</span><span>Data Modeling</span><span>KPI Analysis</span><span>ETL</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <h4>PROGRAMMING &amp; ML</h4>
+        <div class="tagcloud">
+          <span>Python</span><span>Jupyter Notebook</span><span>Pandas / NumPy</span><span>Scikit-learn</span><span>Matplotlib / Seaborn / Plotly</span><span>Streamlit</span><span>Git</span><span>API Testing (Python, Requests)</span>
+        </div>
+      </div>
+      <div class="skill-col">
+        <h4>CORE &amp; SOFT SKILLS</h4>
+        <div class="tagcloud">
+          <span>Business Intelligence</span><span>Data Cleaning</span><span>Communication</span><span>Teamwork</span><span>Problem Solving</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <h2>Let's build something with data — or code.</h2>
+      <div class="contact-links">
+        <a href="mailto:Mohamedsamir272001@gmail.com">✉ Mohamedsamir272001@gmail.com</a>
+        <a href="tel:+201014851196">☎ +20 101 485 1196</a>
+        <a href="https://linkedin.com/in/Mohamedsamir233" target="_blank" rel="noopener">in linkedin.com/in/Mohamedsamir233</a>
+        <a href="https://github.com/mohamedsamir233" target="_blank" rel="noopener">⌥ github.com/mohamedsamir233</a>
+        <a>📍 Cairo, Egypt</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Mohamed Samir — built with data, curiosity and one too many dashboards.</div>
+  </div>
+</footer>
+
+<script>
+  // typewriter roles
+  const roles = ["Software Engineer", "Data Analyst", "Business Intelligence Developer", "ML Practitioner", "Aspiring Data Engineer", "Python Developer"];
+  const el = document.getElementById('typewriter');
+  let ri = 0, ci = 0, deleting = false;
+  function tick(){
+    const word = roles[ri];
+    if(!deleting){
+      ci++;
+      el.textContent = word.slice(0, ci);
+      if(ci === word.length){ deleting = true; setTimeout(tick, 1400); return; }
+    } else {
+      ci--;
+      el.textContent = word.slice(0, ci);
+      if(ci === 0){ deleting = false; ri = (ri+1) % roles.length; }
+    }
+    setTimeout(tick, deleting ? 35 : 65);
+  }
+  tick();
+
+  // project filters
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.proj-card');
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(c=>{
+        c.classList.toggle('hide', f !== 'all' && c.dataset.cat !== f);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
